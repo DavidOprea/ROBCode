@@ -12,6 +12,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Potentiometer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -38,7 +39,7 @@ public class RobotContainer {
       () -> joystick.getRawAxis(1)
     ));
 
-    arm.setDefaultCommand(new ArmCommand(arm, 
+    arm.setDefaultCommand(new ArmJoystickCommand(arm, 
     potentiometer,
     () ->joystick.getRawAxis(5)
     ));
@@ -58,6 +59,10 @@ public class RobotContainer {
    */
   private void configureBindings() {
 
+    new JoystickButton(joystick, 1).onTrue(new ArmCommand(arm, 
+    potentiometer,
+    () ->joystick.getRawAxis(5)
+    ));
   }
 
   /**

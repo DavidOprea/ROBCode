@@ -23,6 +23,7 @@ public class Drivetrain extends SubsystemBase{
     }
 
     public void setMotors (double speed, double turn){
+        turn *= -1;
         leftTalon1.set(ControlMode.PercentOutput, speed + turn);
         leftTalon2.set(ControlMode.PercentOutput, speed + turn);
         leftTalon3.set(ControlMode.PercentOutput, speed + turn);
@@ -30,6 +31,7 @@ public class Drivetrain extends SubsystemBase{
         rightTalon2.set(ControlMode.PercentOutput, speed - turn);
         rightTalon3.set(ControlMode.PercentOutput, speed - turn);
 
+        
     }
 
 }
